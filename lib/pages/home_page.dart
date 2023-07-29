@@ -73,15 +73,15 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: Container(
         color: Colors.grey.shade200,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
           child: GNav(
             backgroundColor: Colors.grey.shade200,
             color: Colors.grey[700],
             activeColor: Colors.black,
             tabBackgroundColor: Colors.grey.shade300,
-            gap: 8,
+            gap: 8.0,
             onTabChange: (index) {
-              print(index); // 페이지 넣을 예정
+              print(index); // index별 page전환 구현 예정
             },
             padding: EdgeInsets.all(16),
             tabs: const [
@@ -91,15 +91,15 @@ class _HomePageState extends State<HomePage> {
               ),
               GButton(
                 icon: Icons.favorite_border,
-                text: '임시',
+                text: '좋아요', // 임시값
               ),
               GButton(
                 icon: Icons.search,
-                text: '임시',
+                text: '검색', // 임시값
               ),
               GButton(
                 icon: Icons.settings,
-                text: '임시',
+                text: '설정', // 임시값
               ),
             ],
           ),
@@ -111,9 +111,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 20,
-                ),
+                Text("HomePage", style: TextStyle(fontSize: 40, color: Colors.grey.shade700),),
               ],
             ),
           ),

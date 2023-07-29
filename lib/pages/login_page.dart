@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:jeongotalk/components/my_button.dart';
 import 'package:jeongotalk/components/my_textfield.dart';
 import 'package:jeongotalk/components/square_tile.dart';
-
 import 'forgot_password_page.dart';
 
+// for Android Studio with MacOS
 // command + option + L => 코드 자동 정렬
 // command + \ => hot reload
 
