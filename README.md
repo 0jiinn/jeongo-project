@@ -1,17 +1,10 @@
-# jeongotalk
+# 전주고등학교 어플리케이션
 
-Jeonjugo Community App
+> 전주고등학교 학급별 소식 및 공지 제공 <br />
 
-## Getting Started
+## 설치법
 
-This project is a starting point for a Flutter application.
+터미널에 다음 명령어를 입력하세요:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# jeongo-project
+1) 'git clone https://github.com/0jiinn/jeongo-project'
+2) 'flutter pub get'
