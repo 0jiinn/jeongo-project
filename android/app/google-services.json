@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "693112953739",
+    "project_id": "jeongotalk",
+    "storage_bucket": "jeongotalk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693112953739:android:a8a28e8766935e5018ad8e",
+        "android_client_info": {
+          "package_name": "com.jeongotalk.jeongotalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693112953739-du8a04d3j1uje2gan005ddkmmoqcc278.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpvqXS_vkKzX0XHW37eGU-mM_x2PfNPUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693112953739-du8a04d3j1uje2gan005ddkmmoqcc278.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "693112953739-3fvda6igu0d9so4g87fg13ghficr9p6s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jeongotalk.jeongotalk"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
