@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
               ],
             ),
