@@ -6,5 +6,5 @@
 
 터미널에 다음 명령어를 입력해주세요:
 
-1) 'git clone https://github.com/0jiinn/jeongo-project'
-2) 'flutter pub get'
+1) `git clone https://github.com/0jiinn/jeongo-project`
+2) `flutter pub get`
