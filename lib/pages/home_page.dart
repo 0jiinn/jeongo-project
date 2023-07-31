@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import '../components/post.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -25,51 +26,20 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        // leading: Builder(
-        //   builder: (BuildContext context) {
-        //     return IconButton(
-        //       icon: Icon(Icons.menu, color: Colors.grey[700]),
-        //       onPressed: () {
-        //         Scaffold.of(context).openDrawer();
-        //       },
-        //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-        //     );
-        //   },
-        // ),
-        actions: [
-          IconButton(
-            onPressed: () => FirebaseAuth.instance.signOut(),
-            icon: Icon(
-              Icons.logout,
-              color: Colors.grey[700],
-            ),
-          ),
-        ],
+        title: Text(
+          "2학년 0반",
+          style: (TextStyle(color: Colors.grey.shade900)),
+        ),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () => FirebaseAuth.instance.signOut(),
+        //     icon: Icon(
+        //       Icons.logout,
+        //       color: Colors.grey[700],
+        //     ),
+        //   ),
+        // ],
       ),
-      // drawer: Drawer(
-      //   child: ListView(
-      //     padding: EdgeInsets.zero,
-      //     children: [
-      //       UserAccountsDrawerHeader(
-      //         accountName: Text("홍길동"), // displayName 기능 만들어서 넣을예정
-      //         accountEmail: Text("${user.email}"),
-      //         currentAccountPicture: CircleAvatar(
-      //           child: Icon(
-      //             Icons.account_circle_rounded,
-      //             color: Colors.indigo,
-      //           ),
-      //           backgroundColor: Colors.white,
-      //         ),
-      //         decoration: BoxDecoration(
-      //           color: Colors.indigo[500],
-      //         ),
-      //       ),
-      //       ListTile(
-      //         title: Text("empty"),
-      //       ),
-      //     ],
-      //   ),
-      // ),
       bottomNavigationBar: Container(
         color: Colors.grey.shade200,
         child: Padding(
@@ -109,9 +79,69 @@ class _HomePageState extends State<HomePage> {
         child: Center(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("HomePage", style: TextStyle(fontSize: 40, color: Colors.grey.shade700),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(
+                      Icons.library_books_rounded,
+                      size: 50,
+                      color: Colors.grey.shade800,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon(
+                      Icons.calendar_month_outlined,
+                      size: 50,
+                      color: Colors.grey.shade800,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    )
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("시험범위"),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text("캘린더"),
+                    SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("공지", style: (TextStyle(fontSize: 20))),
+                  ],
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Post(
+                  nickname: "홍길동",
+                  role: "실장",
+                ),
+                Post(
+                  nickname: "홍길동",
+                  role: "부실장",
+                ),
+                Post(
+                  nickname: "홍길동",
+                  role: "실장",
+                ),
               ],
             ),
           ),
