@@ -25,9 +25,18 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Text(
-            "0학년 0반", //회원가입할 때 쓰여진 학년과 반에 따라서 각 학급별 Home_Page로 이동시킬 예정.
+            "0학년 0반", // 회원가입할 때 쓰여진 학년과 반에 따라서 각 학급별 Home_Page로 이동시킬 예정.
             style: (TextStyle(color: Colors.grey.shade900)),
           ),
+          actions: [ // 이 로그아웃 action은 추후 삭제하고 설정 Page로 이동시킬 예정.
+            IconButton(
+              onPressed: () => FirebaseAuth.instance.signOut(),
+              icon: Icon(
+                Icons.logout,
+                color: Colors.grey[700],
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Container(
