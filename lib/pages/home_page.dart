@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   }
@@ -26,18 +25,9 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.white,
           elevation: 0,
           title: Text(
-            "2학년 0반",
+            "0학년 0반", //회원가입할 때 쓰여진 학년과 반에 따라서 각 학급별 Home_Page로 이동시킬 예정.
             style: (TextStyle(color: Colors.grey.shade900)),
           ),
-          // actions: [
-          //   IconButton(
-          //     onPressed: () => FirebaseAuth.instance.signOut(),
-          //     icon: Icon(
-          //       Icons.logout,
-          //       color: Colors.grey[700],
-          //     ),
-          //   ),
-          // ],
         ),
       ),
       bottomNavigationBar: Container(
@@ -51,12 +41,12 @@ class _HomePageState extends State<HomePage> {
             tabBackgroundColor: Colors.grey.shade300,
             gap: 8.0,
             onTabChange: (index) {
-              print(index); // index별 page전환 구현 예정
+              print(index); // Page전환 구현 예정.
             },
             padding: EdgeInsets.all(16),
             tabs: const [
               GButton(
-                icon: Icons.school,
+                icon: Icons.school, // 적합한 Icon 있으면 적용 바람.
                 text: '학급',
               ),
               GButton(
@@ -69,7 +59,7 @@ class _HomePageState extends State<HomePage> {
               ),
               GButton(
                 icon: Icons.settings,
-                text: '설정', // 임시값
+                text: '설정',
               ),
             ],
           ),
@@ -80,7 +70,8 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row( // scroll해도 고정되도록 해야함
+                Row(
+                  // scroll해도 이 Row가 고정되도록 구현 예정_1.
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -113,17 +104,23 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Row(
+                  // scroll해도 이 Row가 고정되도록 구현 예정_2.
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(
                       width: 10,
                     ),
-                    Text("공지", style: (TextStyle(fontSize: 17, color: Colors.grey.shade900))),
+                    Text("공지",
+                        style: (TextStyle(
+                            fontSize: 17, color: Colors.grey.shade900))),
                   ],
                 ),
                 SizedBox(
                   height: 8,
                 ),
+
+                // 밑의 POST는 고정된 위치의 오른쪽 하단 +버튼 구성 후 클릭시 추가되도록 할 예정.
+
                 Post(
                   nickname: "홍길동",
                   role: "실장",

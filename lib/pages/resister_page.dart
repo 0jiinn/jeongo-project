@@ -4,9 +4,6 @@ import 'package:jeongotalk/components/my_button.dart';
 import 'package:jeongotalk/components/my_textfield.dart';
 import 'package:jeongotalk/components/square_tile.dart';
 
-// command + option + L => 코드 자동 정렬
-// command + \ => hot reload
-
 class ResisterPage extends StatefulWidget {
   final Function()? onTap;
   ResisterPage({Key? key, required this.onTap}) : super(key: key);
@@ -98,6 +95,10 @@ class _ResisterPageState extends State<ResisterPage> {
                   hintText: '비밀번호 확인',
                   obscureText: true,
                 ),
+
+                /* 이 밑에 학년/반을 작성하는 TextField와 그에 따른 각 학급별 비밀번호를 작성하는 Textfield 구현 예정.
+                작성한 학년/반에 따라서 각 학급별 Home_Page로 이동시킬 예정. */
+
                 const SizedBox(height: 25),
                 MyButton(
                   onTap: signUserUp,

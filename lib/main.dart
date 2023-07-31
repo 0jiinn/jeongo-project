@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:jeongotalk/pages/auth_page.dart';
 import 'firebase_options.dart';
-import 'package:jeongotalk/pages/login_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-
+// for Android Studio with MacOS
+// command + option + L => 코드 자동 정렬
+// command + \ => hot reload
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
