@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
 import '../components/post.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
 
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -23,22 +20,25 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          "2학년 0반",
-          style: (TextStyle(color: Colors.grey.shade900)),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Text(
+            "2학년 0반",
+            style: (TextStyle(color: Colors.grey.shade900)),
+          ),
+          // actions: [
+          //   IconButton(
+          //     onPressed: () => FirebaseAuth.instance.signOut(),
+          //     icon: Icon(
+          //       Icons.logout,
+          //       color: Colors.grey[700],
+          //     ),
+          //   ),
+          // ],
         ),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () => FirebaseAuth.instance.signOut(),
-        //     icon: Icon(
-        //       Icons.logout,
-        //       color: Colors.grey[700],
-        //     ),
-        //   ),
-        // ],
       ),
       bottomNavigationBar: Container(
         color: Colors.grey.shade200,
@@ -56,12 +56,12 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(16),
             tabs: const [
               GButton(
-                icon: Icons.home,
-                text: '홈',
+                icon: Icons.school,
+                text: '학급',
               ),
               GButton(
-                icon: Icons.favorite_border,
-                text: '좋아요', // 임시값
+                icon: Icons.newspaper,
+                text: '소식', // 임시값
               ),
               GButton(
                 icon: Icons.search,
@@ -80,43 +80,37 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Icon(
-                      Icons.library_books_rounded,
-                      size: 50,
-                      color: Colors.grey.shade800,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      Icons.calendar_month_outlined,
-                      size: 50,
-                      color: Colors.grey.shade800,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    )
-                  ],
-                ),
-                Row(
+                Row( // scroll해도 고정되도록 해야함
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("시험범위"),
-                    SizedBox(
-                      width: 15,
+                    Column(
+                      children: [
+                        Icon(
+                          Icons.library_books_rounded,
+                          size: 50,
+                          color: Colors.grey.shade800,
+                        ),
+                        Text("시험범위"),
+                      ],
                     ),
-                    Text("캘린더"),
                     SizedBox(
-                      width: 10,
+                      width: 5,
+                    ),
+                    Column(
+                      children: [
+                        Icon(
+                          Icons.calendar_month_outlined,
+                          size: 50,
+                          color: Colors.grey.shade800,
+                        ),
+                        Text("캘린더"),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 5,
                     ),
                   ],
-                ),
-                SizedBox(
-                  height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -124,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text("공지", style: (TextStyle(fontSize: 20))),
+                    Text("공지", style: (TextStyle(fontSize: 17, color: Colors.grey.shade900))),
                   ],
                 ),
                 SizedBox(
