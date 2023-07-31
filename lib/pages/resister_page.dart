@@ -78,9 +78,12 @@ class _ResisterPageState extends State<ResisterPage> {
                   style: TextStyle(color: Colors.grey[700], fontSize: 25),
                 ),
                 const SizedBox(height: 25),
+
+                /* 닉네임 설정 TextField 및 닉네임 중복 체크 구현 예정 */
+
                 MyTextField(
                   controller: emailController,
-                  hintText: '이메일',
+                  hintText: '이메일', // 이메일 인증 기능 구현 예정.
                   obscureText: false,
                 ),
                 const SizedBox(height: 10),

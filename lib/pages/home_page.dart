@@ -128,7 +128,9 @@ class _HomePageState extends State<HomePage> {
                   height: 8,
                 ),
 
-                // 밑의 POST는 고정된 위치의 오른쪽 하단 +버튼 구성 후 클릭시 추가되도록 할 예정.
+                /* 밑의 POST는 고정된 위치의 오른쪽 하단 +버튼 구성 후 클릭시 추가되도록 할 예정.
+                (+ 학급 실장/부실장에게 강제퇴장, 강제삭제, 학급 비밀번호 재설정과 같은 권한 부여 예정)
+                 */
 
                 Post(
                   nickname: "홍길동",
