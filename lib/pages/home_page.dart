@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:jeongotalk/components/my_textfield.dart';
@@ -13,7 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final contentController = TextEditingController();
+  final currentUser = FirebaseAuth.instance.currentUser!;
+  final textController = TextEditingController();
 
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -33,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 10,
+                height: 15,
               ),
               Row(
                 children: [
@@ -46,15 +49,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-
-              /* 여기에다가 공지에 적용된 이름 TextField, 직책 TextField 넣을 예정 */
-
+              SizedBox(
+                height: 10,
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextField(
                   textAlignVertical: TextAlignVertical.top,
                   // 왜 이거 적용이 안되는거지??
-                  controller: contentController,
+                  controller: textController,
                   decoration: InputDecoration(
                     alignLabelWithHint: true,
                     enabledBorder: OutlineInputBorder(
@@ -67,15 +70,42 @@ class _HomePageState extends State<HomePage> {
                     filled: true,
                     hintText: "공지할 내용을 적어주세요.",
                     hintStyle: TextStyle(color: Colors.grey[500]),
-                    contentPadding: EdgeInsets.symmetric(vertical: 60),
+                    contentPadding: EdgeInsets.symmetric(vertical: 120),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: postMessage,
+                    child: Text(
+                      "업로드",
+                      style:
+                          TextStyle(color: Colors.grey.shade900, fontSize: 20),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ));
       },
     );
+  }
+
+  void postMessage() {
+    if (textController.text.isNotEmpty) {
+      FirebaseFirestore.instance.collection('User Posts').add({
+        'UserEmail': currentUser.email,
+        'Role': "직업",
+        'Message': textController.text,
+        'TimeStamp': Timestamp.now(),
+      });
+    }
   }
 
   @override
@@ -108,6 +138,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+
                     Column(
                       children: [
                         // Icon(
@@ -205,44 +236,43 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text("공지",
-                        style: (TextStyle(
-                            fontSize: 17, color: Colors.grey.shade900))),
-                  ],
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-
-                /* 밑의 POST는 고정된 위치의 오른쪽 하단 +버튼 구성 후 클릭시 추가되도록 할 예정.
-                    (+ 학급 실장/부실장에게 강제퇴장, 강제삭제, 학급 비밀번호 재설정과 같은 권한 부여 예정)
-                     */
-
-                Post(
-                  nickname: "홍길동",
-                  role: "실장",
-                ),
-                Post(
-                  nickname: "홍길동",
-                  role: "부실장",
-                ),
-                Post(
-                  nickname: "홍길동",
-                  role: "실장",
-                ),
-              ],
+        child: Column(
+          children: [
+            Expanded(
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("User Posts")
+                    .orderBy(
+                      "TimeStamp",
+                      descending: false,
+                    )
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        final post = snapshot.data!.docs[index];
+                        return Post(
+                          nickname: post['UserEmail'],
+                          role: post['Role'],
+                          message: post['Message'],
+                        );
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text("Error : ${snapshot.error}"),
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

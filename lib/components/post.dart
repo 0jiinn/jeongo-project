@@ -1,13 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Post extends StatelessWidget {
   final String nickname;
   final String role;
+  final String message;
 
   const Post({
     Key? key,
     required this.nickname,
     required this.role,
+    required this.message,
   }) : super(key: key);
 
   @override
@@ -57,6 +60,30 @@ class Post extends StatelessWidget {
                     ],
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 190,
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        message,
+                        style: TextStyle(fontSize: 17),
+                        maxLines: 8,
+                        overflow: TextOverflow.ellipsis,
+                        textDirection: TextDirection.ltr,
+                        textAlign: TextAlign.justify,
+                        softWrap: true,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
