@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-// import 'package:jeongotalk/components/my_textfield.dart';
-// import 'package:jeongotalk/pages/add_post_page.dart';
-// import 'package:jeongotalk/pages/login_page.dart';
+import 'package:jeongotalk/components/my_textfield.dart';
+import 'package:jeongotalk/pages/login_page.dart';
 import '../components/post.dart';
 
 class HomePage extends StatefulWidget {
