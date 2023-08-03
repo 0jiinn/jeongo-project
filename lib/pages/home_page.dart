@@ -105,6 +105,7 @@ class _HomePageState extends State<HomePage> {
         'Message': textController.text,
         'TimeStamp': Timestamp.now(),
       });
+      Navigator.pop(context);
     }
   }
 
